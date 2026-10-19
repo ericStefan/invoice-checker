@@ -1,0 +1,57 @@
+# ===== 运行产物：绝不提交 =====
+# 所有查验结果、截图、日志、历史归档都在这里，随时可删
+data/
+
+# 兜底：即使产物被写到别处，也不提交
+查验结果.xlsx
+查验结果.html
+查验截图.zip
+查验成功截图.zip
+查验截图/
+shots/
+shots_*/
+logs/
+历史输出/
+样例发票/
+
+# ===== Python 环境 =====
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# 测试与打包
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# ===== 编辑器 / IDE =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ===== 操作系统 =====
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+$RECYCLE.BIN/
+
+# ===== 本地工具与私有数据 =====
+.workbuddy/
+.env
+*.log

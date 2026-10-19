@@ -1,0 +1,42 @@
+# 发票批量查验工具 · Python 依赖
+#
+# 安装：
+#   python -m venv .venv
+#   .venv\Scripts\pip install -r requirements.txt
+#   .venv\Scripts\python -m playwright install chromium
+#
+# 版本为本机实测通过的版本；不带版本号也能装，但建议按此锁定以避免
+# 上游大版本变更导致行为漂移（尤其是 opencv / onnxruntime 组合）。
+
+# ---------- 浏览器自动化（打开查验平台、填单、截图）----------
+playwright==1.63.0
+# ⚠️ 装完包后必须再执行一次：python -m playwright install chromium
+#    （浏览器内核是单独下载的，不在 pip 包里）
+
+# ---------- 二维码识别（提取发票号码/代码/日期/金额）----------
+pyzbar==0.1.9
+# ⚠️ Windows：pyzbar 依赖 zbar 的 DLL。当前 pip 包内已内置
+#    （site-packages/pyzbar/libzbar-64.dll），无需额外安装。
+#    Linux 需自行安装：sudo apt install libzbar0
+
+# ---------- 图像处理（验证码二值化、字符切分）----------
+opencv-python==5.0.0.93
+Pillow==12.3.0
+
+# ---------- OCR（验证码识别主力）----------
+ddddocr==1.6.1
+# 依赖 onnxruntime + numpy，会自动一并安装
+
+# ---------- PDF 解析（老版发票是 PDF，需提二维码与文本层）----------
+PyMuPDF==1.28.2
+# 代码里以 import fitz 使用；新版本建议 import pymupdf（fitz 为兼容别名）
+
+# ---------- Excel 结果表 ----------
+openpyxl==3.1.5
+
+# ---------- 生成测试用样例发票（仅 tools/make_samples.py 需要）----------
+segno==1.6.6
+
+# 说明：
+# · tkinter（GUI）、urllib 等均为 Python 标准库，无需安装。
+# · numpy / onnxruntime 由 ddddocr 自动带入，此处不重复列出。
